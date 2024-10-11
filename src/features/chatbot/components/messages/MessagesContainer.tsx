@@ -81,7 +81,7 @@ const MessagesContainer = () => {
             newMessages.push({
               sender: Sender.Bot,
               text: messages.SELECT_STOCK,
-              options: getStockOptions(selectedExchangeCode ?? ''),
+              options: getStockOptions(selectedExchangeCode),
             });
             setStep(Step.Stock);
           }

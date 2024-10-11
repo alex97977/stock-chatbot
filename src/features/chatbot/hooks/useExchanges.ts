@@ -40,8 +40,9 @@ const useExchanges = () => {
   }, []);
 
   const getStockOptions = useCallback(
-    (exchangeCode: string): OptionType[] => {
-      const topStocks = exchangesByCode[exchangeCode]?.topStocks;
+    (exchangeCode: string | null): OptionType[] => {
+      if (!exchangeCode) return [];
+      const topStocks = exchangesByCode[exchangeCode]?.topStocks ?? {};
       return Object.keys(topStocks).map((key) => ({
         value: topStocks[key].code,
         label: topStocks[key].stockName,
